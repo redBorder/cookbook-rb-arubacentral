@@ -33,7 +33,7 @@ action :add do
       action :create
     end
 
-    template configdir+'/config.yml' do
+    template configdir + '/config.yml' do
       source 'config.erb'
       owner user
       group group
