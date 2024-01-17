@@ -1,6 +1,6 @@
 sensors:
 <%  @arubacentral_nodes.each_with_index do |arubacentral_node, i| %>
-<% if arubacentral_node["redBorder"]["parent_id"].nil? %>
+<% if arubacentral_node["redborder"]["parent_id"].nil? %>
   -
        sensor_name: <%= arubacentral_node["rbname"] %>
        gateway: '<%= arubacentral_node["arubacentral_url"] %>'
@@ -13,7 +13,7 @@ sensors:
 <% end %>
 <% end %>
 kafka:
-  broker: '<%= @kafka_brokers.nil? ? "kafka.#{node["redBorder"]["cdomain"]}" : (@kafka_brokers.first(5).map{|x| "#{x}:9092" }.join(",")) %>'
+  broker: '<%= @kafka_brokers.nil? ? "kafka.#{node["redborder"]["cdomain"]}" : (@kafka_brokers.first(5).map{|x| "#{x}:9092" }.join(",")) %>'
   producer_name: my_aruba_producer
   location_topic: rb_loc
   status_topic: rb_state
@@ -25,7 +25,7 @@ flow_sensors:
 <% flow_nodes_with_aps.each do |flow_node_with_aps| %>
   -
        sensor_name: <%= flow_node_with_aps["rbname"] %>
-       sensor_uuid: <%= flow_node_with_aps["redBorder"]["sensor_uuid"] %>
+       sensor_uuid: <%= flow_node_with_aps["redborder"]["sensor_uuid"] %>
        access_points: <%= flow_node_with_aps.fetch("access_points", {}).values %>
 <% end %>
     
