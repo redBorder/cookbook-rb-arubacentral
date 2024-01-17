@@ -1,0 +1,31 @@
+sensors:
+<%  @arubacentral_nodes.each_with_index do |arubacentral_node, i| %>
+<% if arubacentral_node["redBorder"]["parent_id"].nil? %>
+  -
+       sensor_name: <%= arubacentral_node["rbname"] %>
+       gateway: '<%= arubacentral_node["arubacentral_url"] %>'
+       email: '<%= arubacentral_node["arubacentral_username"] %>'
+       password: '<%= arubacentral_node["arubacentral_password"] %>'
+       client_id: '<%= arubacentral_node["arubacentral_client_id"] %>'
+       client_secret: '<%= arubacentral_node["arubacentral_client_secret"] %>'
+       customer_id: '<%= arubacentral_node["arubacentral_customer_id"] %>'
+       base_url: '<%= arubacentral_node["arubacentral_url"] %>'
+<% end %>
+<% end %>
+kafka:
+  broker: '<%= @kafka_brokers.nil? ? "kafka.#{node["redBorder"]["cdomain"]}" : (@kafka_brokers.first(5).map{|x| "#{x}:9092" }.join(",")) %>'
+  producer_name: my_aruba_producer
+  location_topic: rb_loc
+  status_topic: rb_state
+service:
+  sleep_time: 300
+  log_level: 2
+flow_sensors:
+<% flow_nodes_with_aps = @flow_nodes.select { |flow_node| flow_node.key?("access_points") && !flow_node["access_points"].empty? } %>
+<% flow_nodes_with_aps.each do |flow_node_with_aps| %>
+  -
+       sensor_name: <%= flow_node_with_aps["rbname"] %>
+       sensor_uuid: <%= flow_node_with_aps["redBorder"]["sensor_uuid"] %>
+       access_points: <%= flow_node_with_aps.fetch("access_points", {}).values %>
+<% end %>
+    
