@@ -1,7 +1,7 @@
-sensors:
 <%  @arubacentral_nodes.each_with_index do |arubacentral_node, i| %>
 <% if arubacentral_node["redborder"]["parent_id"].nil? %>
-  -
+sensors:
+  -  
        sensor_name: <%= arubacentral_node["rbname"] %>
        gateway: '<%= arubacentral_node["arubacentral_url"] %>'
        email: '<%= arubacentral_node["arubacentral_username"] %>'
@@ -28,4 +28,10 @@ flow_sensors:
        sensor_uuid: <%= flow_node_with_aps["redborder"]["sensor_uuid"] %>
        access_points: <%= flow_node_with_aps.fetch("access_points", {}).values %>
 <% end %>
-    
+cache:
+  ttl:
+    fetch_all_campuses: 86400
+    fetch_campus: 86400
+    fetch_building: 86400
+  keys: ["fetch_all_campuses", "fetch_campus", "fetch_building"]
+  
