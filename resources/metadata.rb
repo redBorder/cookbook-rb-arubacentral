@@ -1,7 +1,7 @@
 unified_mode     true
 name             'rb-arubacentral'
-maintainer       'redborder'
-maintainer_email 'dvanhoucke@redborder.com'
-license          'All rights reserved'
+maintainer       'Eneo Tecnología S.L.'
+maintainer_email 'git@redborder.com'
+license          'AGPL-3.0'
 description      'Installs/Configures rb-arubacentral service'
 version          '0.0.2'
