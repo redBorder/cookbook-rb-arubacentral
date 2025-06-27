@@ -1,6 +1,11 @@
 cookbook-rb-arubacentral CHANGELOG
 ===============
 
+## 0.0.4
+
+  - nilsver
+    - [7cc6789] remove flush cache
+
 ## 0.0.3
 
   - Miguel Negrón
