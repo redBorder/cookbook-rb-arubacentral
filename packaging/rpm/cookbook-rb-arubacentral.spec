@@ -48,7 +48,8 @@ if [ "$1" = 0 ] && [ -d /var/chef/cookbooks/rb-arubacentral ]; then
 fi
 
 %files
-%defattr(0755,root,root)
+%defattr(0644,root,root)
+%attr(0755,root,root)
 /var/chef/cookbooks/rb-arubacentral
 %defattr(0644,root,root)
 /var/chef/cookbooks/rb-arubacentral/README.md
