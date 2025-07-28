@@ -1,6 +1,11 @@
 cookbook-rb-arubacentral CHANGELOG
 ===============
 
+## 0.0.5
+
+  - jnavarrorb
+    - [d37e19b] Remove executable permissions on non-executable files
+
 ## 0.0.4
 
   - nilsver
