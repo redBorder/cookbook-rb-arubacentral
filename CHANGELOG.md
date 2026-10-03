@@ -1,6 +1,11 @@
 cookbook-rb-arubacentral CHANGELOG
 ===============
 
+## 0.0.6
+
+  - manegron
+    - [31fdb30] Upload cookbook only if opscode-erchef is active
+
 ## 0.0.5
 
   - jnavarrorb
